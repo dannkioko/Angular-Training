@@ -1,2 +1,2 @@
-<app-topinput></app-topinput>
-<app-server></app-server>
+<app-topinput (servercreate)="onServerAdded($event)"></app-topinput>
+<div class="container"><div class="row"><app-server *ngFor = "let server of servers" [server]="server"></app-server></div></div>   

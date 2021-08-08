@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Server } from '../server/model/server.model';
 
 @Component({
   selector: 'app-topinput',
@@ -6,12 +7,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./topinput.component.css']
 })
 export class TopinputComponent implements OnInit {
-
-  servername: string = "";
-
-  constructor() {}
+  @Output() servercreate = new EventEmitter<{name: string, desc: string}>();
+  @Output() blueprintCreate = new EventEmitter<{name: string, desc: string}>();
+  servername = "";
+  serverdesc = "";
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
+addServer(){
+  this.servercreate.emit({name: this.servername, desc: this.serverdesc});
+}
+addBlueprint(){
+  this.blueprintCreate.emit({name: this.servername, desc: this.serverdesc});
+}
 
 }
